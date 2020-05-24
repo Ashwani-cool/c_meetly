@@ -1,0 +1,165 @@
+
+* {box-sizing: border-box;}
+ul {list-style-type: none;}
+body {font-family: Verdana, sans-serif;}
+
+.month {
+  padding: 70px 25px;
+  width: 100%;
+  background: #1abc9c;
+  text-align: center;
+}
+
+.month ul {
+  margin: 0;
+  padding: 0;
+}
+
+.month ul li {
+  color: white;
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+.month .prev {
+  float: left;
+  padding-top: 10px;
+}
+
+.month .next {
+  float: right;
+  padding-top: 10px;
+}
+
+.weekdays {
+  margin: 0;
+  padding: 10px 0;
+  background-color: #ddd;
+}
+
+.weekdays li {
+  display: inline-block;
+  width: 13.6%;
+  color: #666;
+  text-align: center;
+}
+
+.days {
+  padding: 10px 0;
+  background: #eee;
+  margin: 0;
+}
+
+.days li {
+  list-style-type: none;
+  display: inline-block;
+  width: 13.6%;
+  text-align: center;
+  margin-bottom: 5px;
+  font-size:12px;
+  color: #777;
+}
+
+
+.btn{
+  border: none;
+  outline: none;
+  padding: 10px 16px;
+  background-color: #eee;
+  cursor: pointer;
+  font-size: 18px;
+}
+.booked{
+  background: rgb(116, 116, 116);
+  color: white;
+}
+.active, .btn:hover {
+  background: #1abc9c;
+  color: white;
+}
+
+
+/* Add media queries for smaller screens */
+@media screen and (max-width:720px) {
+  .weekdays li, .days li {width: 13.1%;}
+}
+
+@media screen and (max-width: 420px) {
+  .weekdays li, .days li {width: 12.5%;}
+  .days li .active {padding: 2px;}
+}
+
+@media screen and (max-width: 290px) {
+  .weekdays li, .days li {width: 12.2%;}
+}
+
+
+/* TODO CSS */
+
+body{
+  background: #32363b;
+  font-family: tahoma;
+  color: #989898;
+}
+
+#todo-table{
+  position: relative;
+  width: 95%;
+  background: #090d13;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+#todo-table form:after{
+  margin: 0;
+  content: '';
+  display: block;
+  clear: both;
+}
+
+#todo-table input[type="text"]{
+  width: 100%;
+  padding: 20px;
+  background:#181c22;
+  border: 0;
+  font-size: 20px;
+  color: #989898;
+}
+
+.meet-con{
+  background-color: rgb(31, 37, 48);
+  padding: 20px;
+  position: relative;
+  margin: 10px;
+  z-index: 1000;
+}
+
+
+#todo-table button{
+  padding: 20px;
+  width: 30%;
+  background: #23282e;
+  border: 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+#todo-table ul{
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+#todo-table li{
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  font-family: arial;
+  font-size: 20px;
+  cursor: pointer;
+  letter-spacing: 1px;
+}
