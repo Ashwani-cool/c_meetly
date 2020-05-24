@@ -1,6 +1,10 @@
 var express = require('express');
 var router = express.Router();
 
+const User = require('../api/users');
+const user = new User();
+
+
 // Data
 
 var data = [
@@ -23,17 +27,25 @@ var data = [
 
 /* GET home page. */
 router.get('/',  function(req, res, next) {
-  var booked = []
-for(var i=0; i<data.length; i++){
-  booked[i] = data[i].date
-}
-  res.render('index', {
-    d: '',
-    date: '',
-    bs: booked, //booked slot
-    page: 'homepage'
+  user.find(result=>{
+    if(result.length){
+      var booked = []
+      for(var i=0; i<data.length; i++){
+        booked[i] = data[i].date
+      }
+        res.render('index', {
+          d: '',
+          date: '',
+          bs: booked, //booked slot
+          page: 'homepage'
+      })
+    }
+    else{
+      res.redirect('/user/login')
+    }
   })
 });
+
 router.post('/', function(req, res, next){
   var r = req.body;
   var temp = {
@@ -57,26 +69,37 @@ for(var i=0; i<data.length; i++){
 })
 
 router.get('/:date', function(req, res){
-  var date = req.params.date;
-  var temp_ar = []
-  var j = 0
-  for(var i=0; i<data.length; i++){
-    if(data[i].date == date){
-      temp_ar[j]=data[i]
-      j++
+  user.find(result=>{
+    if(result.length){
+      var date = req.params.date;
+      var temp_ar = []
+      var j = 0
+      for(var i=0; i<data.length; i++){
+        if(data[i].date == date){
+          temp_ar[j]=data[i]
+          j++
+        }
+      }
+      var booked = []
+      for(var i=0; i<data.length; i++){
+        booked[i] = data[i].date
+      }
+      res.render('index',{
+        d: temp_ar,
+        date: date,
+        bs: booked, //booked slot
+        page: 'homepage'
+      })
     }
-  }
-  var booked = []
-for(var i=0; i<data.length; i++){
-  booked[i] = data[i].date
-}
-  res.render('index',{
-    d: temp_ar,
-    date: date,
-    bs: booked, //booked slot
-    page: 'homepage'
+    else{
+      res.redirect('/user/login')
+    }
   })
+  
 })
+
+
+
 
 
 
